@@ -57,9 +57,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ int       nCmdShow)
 {
     // --- 1. 单例检查 (防止重复开启) ---
-    HANDLE hMutex = CreateMutex(NULL, TRUE, L"Global\\EdgeFlowMutex");
+    HANDLE hMutex = CreateMutexW(NULL, TRUE, L"Global\\EdgeFlowMutex");
     if (GetLastError() == ERROR_ALREADY_EXISTS) {
-        MessageBox(NULL, L"EdgeFlow 已经在运行中！", L"提示", MB_OK | MB_ICONINFORMATION);
+        MessageBoxW(NULL, L"EdgeFlow 已经在运行中！", L"提示", MB_OK | MB_ICONINFORMATION);
         return 0; 
     }
 
@@ -110,7 +110,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 } else {
                     auto now = std::chrono::steady_clock::now();
                     if (std::chrono::duration_cast<std::chrono::milliseconds>(now - exitStartTime).count() > 3000) {
-                        if (MessageBox(NULL, L"确定要退出 EdgeFlow 吗？", L"退出", MB_YESNO | MB_ICONQUESTION) == IDYES) {
+                        if (MessageBoxW(NULL, L"确定要退出 EdgeFlow 吗？", L"退出", MB_YESNO | MB_ICONQUESTION) == IDYES) {
                             break; // 退出循环
                         }
                         // 如果点No，重置状态防止连续弹窗

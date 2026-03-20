@@ -38,7 +38,7 @@ jobs:
         shell: cmd
         run: |
           if not exist EdgeFlow\dist mkdir EdgeFlow\dist
-          cl /EHsc /O2 /DNDEBUG EdgeFlow\src\EdgeFlow.cpp /Fe:EdgeFlow\dist\EdgeFlow.exe
+          cl /EHsc /O2 /DNDEBUG /DUNICODE /D_UNICODE EdgeFlow\src\EdgeFlow.cpp /Fe:EdgeFlow\dist\EdgeFlow.exe
 
       - name: Package EdgeFlow
         shell: powershell

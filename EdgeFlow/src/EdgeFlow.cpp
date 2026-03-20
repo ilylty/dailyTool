@@ -4,6 +4,13 @@
  * 编译环境: Visual Studio (MSVC)
  */
 
+#ifndef UNICODE
+#define UNICODE
+#endif
+#ifndef _UNICODE
+#define _UNICODE
+#endif
+
 #include <windows.h>
 #include <string>
 #include <chrono>
